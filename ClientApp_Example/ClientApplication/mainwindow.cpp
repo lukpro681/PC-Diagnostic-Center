@@ -11,11 +11,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(sendButton, &QPushButton::clicked, this, &MainWindow::sendMessage);
     connect(discoverButton, &QPushButton::clicked, this, &MainWindow::discoverServers);
+   // connect(tcpSocket, &QTcpSocket::readyRead, this, &MainWindow::receiveMessage);
 }
 
 void MainWindow::sendMessage()
 {
     QString recipient = recipientLineEdit->text();
+    QString UserInfo = QHostInfo::localHostName();
     QString message;
 
     if (radioButton1->isChecked()) {
@@ -26,23 +28,35 @@ void MainWindow::sendMessage()
         message = "Opcja 3";
     }
 
-    message += "\n\n" + notesTextEdit->toPlainText();
+    message +=  "\n" + UserInfo + "\n" + notesTextEdit->toPlainText() + "\n";
 
-    tcpSocket->connectToHost(recipient, 1234);
+
+    tcpSocket->connectToHost(recipient, 4829);
 
     if (tcpSocket->waitForConnected()) {
+        qDebug() << "Wysyłanie wiadomości:";
+                qDebug() << "Odbiorca: " << UserInfo;
+                qDebug() << "Treść: " << message;
         tcpSocket->write(message.toUtf8());
         tcpSocket->waitForBytesWritten();
         tcpSocket->disconnectFromHost();
+        qDebug() << "Wysłano Pomyślnie";
     } else {
         QMessageBox::critical(this, "Błąd", "Nie udało się połączyć z serwerem.");
     }
 }
 
+
+//void MainWindow::receiveMessage()
+//{
+//    QString message = QString::fromUtf8(tcpSocket->readAll());
+//    QMessageBox::information(this, "Otrzymano wiadomość", message);
+//}
+
 void MainWindow::discoverServers()
 {
     QUdpSocket udpSocket;
-    udpSocket.bind(1235, QUdpSocket::ShareAddress);
+    udpSocket.bind(4830, QUdpSocket::ShareAddress);
 
     QByteArray datagram = "DiscoverServers";
     udpSocket.writeDatagram(datagram.data(), datagram.size(), QHostAddress::Broadcast, 1235);

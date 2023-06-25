@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QTcpSocket>
+#include <QSysInfo>
+#include <QHostInfo>
 #include "ui_mainwindow.h"
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
@@ -15,10 +17,13 @@ public:
 private slots:
     void sendMessage();
     void discoverServers();
+//    void receiveMessage();
 
 private:
     QTcpSocket* tcpSocket;
     void populateServerList(const QStringList& servers);
+
+
 };
 
 #endif // MAINWINDOW_H
