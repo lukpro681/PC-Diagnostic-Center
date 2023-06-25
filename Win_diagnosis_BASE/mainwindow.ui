@@ -359,7 +359,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>rksound.png</pixmap>
+       <pixmap>diag_center_banner.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
