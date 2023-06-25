@@ -11,26 +11,54 @@
 #include <QSystemTrayIcon>
 #include <QList>
 #include <QtGui>
+#include <Windows.h>
+#include <QCoreApplication>
+
 
 int main(int argc, char *argv[])
 {
+    // Sprawdzanie uprawnień administratora
+//       BOOL isElevated = FALSE;
+//       HANDLE token = NULL;
+
+//       if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &token))
+//          {
+//              TOKEN_ELEVATION elevation;
+//              DWORD size = sizeof(TOKEN_ELEVATION);
+
+//              if (GetTokenInformation(token, TokenElevation, &elevation, sizeof(elevation), &size))
+//              {
+//                  isElevated = elevation.TokenIsElevated;
+//              }
+//          }
+
+//          // Jeśli nie jesteś administratorem, uruchamiaj aplikację ponownie z uprawnieniami administratora
+//          if (!isElevated)
+//          {
+//              wchar_t executablePath[MAX_PATH];
+//              GetModuleFileNameW(NULL, executablePath, MAX_PATH);
+
+//              ShellExecuteW(NULL, L"runas", executablePath, NULL, NULL, SW_SHOWNORMAL);
+
+//              return 0;
+//          }
     QApplication a(argc, argv);
     a.windowIcon() = QIcon("diag_center.ico");
 //    a.setQuitOnLastWindowClosed(false);
 //    QPixmap trayPix(32,32);
-//    trayPix.load("rklogo.ico");
+//    trayPix.load("diag_center.ico");
 
 
 //    QIcon oIcon(trayPix);
 //   QSystemTrayIcon *trayIcon = new QSystemTrayIcon(oIcon);
 //   qDebug() << trayIcon->isSystemTrayAvailable();
 //   trayIcon->setVisible(true);
-//   trayIcon->showMessage("LIGO ZŁOTA RĄCZKA", "Serwer Nasłuchu jest włączony", QSystemTrayIcon::Information, 1000);
+//   trayIcon->showMessage("PC Diagnostic Center", "Serwer jest włączony", QSystemTrayIcon::Information, 1000);
 
 //    QString serverAddress = "127.0.0.1";
 //    quint16 serverPort = 4829;
 //    QMessageBox x;
-//    x.setWindowIcon(QIcon("rklogo.ico"));
+//    x.setWindowIcon(QIcon("diag_center.ico"));
 //    QTcpSocket socket;
 //        socket.connectToHost(serverAddress, serverPort);
 //        if (socket.waitForConnected()) {
