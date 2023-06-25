@@ -11,6 +11,12 @@
 #include <QActionEvent>
 #include <QMenu>
 #include <QDebug>
+#include <QTcpServer>
+#include <QTcpSocket>
+#include <QCloseEvent>
+#include <QUdpSocket>
+#include <QHostInfo>
+#include <QSysInfo>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

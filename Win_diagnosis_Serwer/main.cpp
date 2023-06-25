@@ -44,43 +44,6 @@ int main(int argc, char *argv[])
 //          }
     QApplication a(argc, argv);
     a.windowIcon() = QIcon("diag_center.ico");
-//    a.setQuitOnLastWindowClosed(false);
-//    QPixmap trayPix(32,32);
-//    trayPix.load("diag_center.ico");
-
-
-//    QIcon oIcon(trayPix);
-//   QSystemTrayIcon *trayIcon = new QSystemTrayIcon(oIcon);
-//   qDebug() << trayIcon->isSystemTrayAvailable();
-//   trayIcon->setVisible(true);
-//   trayIcon->showMessage("PC Diagnostic Center", "Serwer jest włączony", QSystemTrayIcon::Information, 1000);
-
-//    QString serverAddress = "127.0.0.1";
-//    quint16 serverPort = 4829;
-//    QMessageBox x;
-//    x.setWindowIcon(QIcon("diag_center.ico"));
-//    QTcpSocket socket;
-//        socket.connectToHost(serverAddress, serverPort);
-//        if (socket.waitForConnected()) {
-//            // Wysyłanie wiadomości do serwera
-//            QString message = "Hello, World!";
-//            socket.write(message.toUtf8());
-
-//            // Oczekiwanie na odpowiedź od serwera
-//            if (socket.waitForReadyRead()) {
-//                // Odczytywanie odpowiedzi serwera
-//                QString response = socket.readAll();
-
-//                // Wyświetlanie odpowiedzi na ekranie
-//                x.information(nullptr, "Odpowiedź serwera", response);
-//            }
-//        } else {
-//            // Wyświetlanie błędu połączenia na ekranie
-//            x.critical(nullptr, "Błąd połączenia", "Nie udało się połączyć z serwerem.");
-//        }
-
-//        // Zamykanie gniazda TCP
-//        socket.close();
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
