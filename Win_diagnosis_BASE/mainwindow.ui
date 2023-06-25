@@ -159,6 +159,7 @@
       <property name="font">
        <font>
         <pointsize>22</pointsize>
+        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -167,31 +168,6 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="logo">
-      <property name="maximumSize">
-       <size>
-        <width>175</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>rksound.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-      <property name="openExternalLinks">
-       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -257,6 +233,9 @@
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
         <widget class="QRadioButton" name="basic">
+         <property name="toolTip">
+          <string>Wykonuje podstawową procedurę naprawy systemu plików</string>
+         </property>
          <property name="text">
           <string>Podstawowy</string>
          </property>
@@ -264,6 +243,9 @@
        </item>
        <item row="1" column="0">
         <widget class="QRadioButton" name="advanced">
+         <property name="toolTip">
+          <string>Pozwala wybrać zestaw instrukcji, który ma zostać wykonany</string>
+         </property>
          <property name="text">
           <string>Zaawansowany</string>
          </property>
@@ -272,32 +254,12 @@
       </layout>
      </widget>
     </item>
-    <item row="0" column="2" colspan="2">
-     <widget class="QLabel" name="welcome">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Version Label&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="scaledContents">
-       <bool>false</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
     <item row="4" column="3">
      <widget class="QLabel" name="Other_prob">
       <property name="font">
        <font>
         <pointsize>22</pointsize>
+        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -308,22 +270,6 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-    </item>
-    <item row="3" column="0">
-     <spacer name="horizontalSpacer_4">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
     </item>
     <item row="5" column="4">
      <spacer name="horizontalSpacer_2">
@@ -362,6 +308,7 @@
          <property name="font">
           <font>
            <pointsize>12</pointsize>
+           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -395,6 +342,68 @@
         </widget>
        </item>
       </layout>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="logo">
+      <property name="maximumSize">
+       <size>
+        <width>175</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>rksound.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="3">
+     <widget class="QLabel" name="welcome">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Version Label&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
     </item>
    </layout>

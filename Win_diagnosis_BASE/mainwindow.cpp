@@ -71,6 +71,10 @@ void MainWindow::on_pushButton_clicked()
         checkdiskf();
         restart();
     }
+    else if(!ui->op1->isChecked() && !ui->op2->isChecked() && !ui->op3->isChecked() && !ui->op4->isChecked() && !ui->op5->isChecked() && !ui->op6->isChecked() && !ui->op7->isChecked() && !ui->op8->isChecked())
+    {
+        QMessageBox::critical(this,"Błąd","Musisz wybrać przynajmniej jedną opcję!");
+    }
     else {
         if(ui->op8->isChecked())
             erase_temp();
@@ -98,7 +102,7 @@ void MainWindow::on_report_prob_clicked()
 {
     send m_okno;
     m_okno.setWindowTitle("Zgłoś problem do nas");
-    m_okno.setWindowIcon(QIcon("rklogo.ico"));
+    m_okno.setWindowIcon(QIcon("diag_center.ico"));
     m_okno.exec();
 }
 

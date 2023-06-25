@@ -15,7 +15,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    a.windowIcon() = QIcon("rklogo.ico");
+    a.windowIcon() = QIcon("diag_center.ico");
 //    a.setQuitOnLastWindowClosed(false);
 //    QPixmap trayPix(32,32);
 //    trayPix.load("rklogo.ico");
@@ -65,8 +65,8 @@ int main(int argc, char *argv[])
     }
 
     MainWindow w;
-    w.setWindowTitle("Ligo Złota Rączka - Serwer");
-    w.setWindowIcon(QIcon("rklogo.ico"));
+    w.setWindowTitle("PC Diagnostic Center");
+    w.setWindowIcon(QIcon("diag_center.ico"));
     w.show();
     return a.exec();
 }
