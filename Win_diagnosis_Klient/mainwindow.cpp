@@ -9,14 +9,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-//    QMenu *menu1 = new QMenu();
-//    QAction* quitAction = new QAction("Quit", this);
-//    connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
-//    menu1->addAction(quitAction);
 
 
     ui->setupUi(this);
-  //  connectsock();
+
 }
 
 
