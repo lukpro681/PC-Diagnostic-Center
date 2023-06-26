@@ -9,28 +9,46 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-//    QMenu *menu1 = new QMenu();
-//    QAction* quitAction = new QAction("Quit", this);
-//    connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
-//    menu1->addAction(quitAction);
-
-
     ui->setupUi(this);
-  //  connectsock();
+
+    connect(this, SIGNAL(wiadomoscOdebrana(QString,QString,QString)),this,SLOT(pokazWiadomosc(QString,QString,QString)));
+    udpServer = new QUdpSocket(this);
+    udpServer->bind(4830);
+    connect(udpServer,SIGNAL(readyRead()), this, SLOT(przechwycData()));
+
+    tcpServer = new QTcpServer(this);
+    connect(tcpServer, SIGNAL(newConnection()),this,SLOT(nowePolaczenie()));
+    if (!tcpServer->listen(QHostAddress::Any, 4829))
+    {
+        QMessageBox::critical(this, "Błąd", "Nie można uruchomić nasłuchu: " + tcpServer->errorString());
+        return;
+    }
+
+    menuZasobnika = new QMenu(this);
+    QAction *akcjaWidocznosci = new QAction("Pokaż/ukryj",this);
+    QAction *quitAction = new QAction("Zamknij",this);
+    connect(akcjaWidocznosci,SIGNAL(triggered()),this,SLOT(widocznosc()));
+    connect(quitAction,SIGNAL(triggered()),this,SLOT(zamknij()));
+
+    menuZasobnika->addAction(akcjaWidocznosci);
+    menuZasobnika->addAction(quitAction);
+
+    ikonaZasobnik = new QSystemTrayIcon(QIcon("diag_center.ico"),this);
+    ikonaZasobnik->setContextMenu(menuZasobnika);
+    ikonaZasobnik->show();
 }
-
-
 
 MainWindow::~MainWindow()
 {
-
     delete ui;
 }
 
-void MainWindow::connectsock()
+QList<QString> MainWindow::getWiadomosci()
 {
-
+    return wiadomosci;
 }
+
+
 
 
 void MainWindow::on_basic_clicked()
@@ -98,12 +116,120 @@ void MainWindow::on_pushButton_clicked()
 
 
 
-void MainWindow::on_report_prob_clicked()
+//void MainWindow::on_report_prob_clicked()      //niedostępne w aplikacji serwer
+//{
+//    send m_okno;
+//    m_okno.setWindowTitle("Zgłoś problem do nas");
+//    m_okno.setWindowIcon(QIcon("diag_center.ico"));
+//    m_okno.exec();
+//}
+
+void MainWindow::nowePolaczenie()
 {
-    send m_okno;
-    m_okno.setWindowTitle("Zgłoś problem do nas");
-    m_okno.setWindowIcon(QIcon("diag_center.ico"));
-    m_okno.exec();
+    qDebug() << "nowe połączenie";
+    QTcpSocket *klient = tcpServer->nextPendingConnection();
+    klienci.append(klient);
+    connect(klient, SIGNAL(readyRead()),this,SLOT(czytajDane()));
+}
+
+void MainWindow::czytajDane()
+{
+    qDebug() << "Czytam";
+    QTcpSocket *klient = qobject_cast<QTcpSocket*>(sender());
+    if (klient)
+    {
+        qDebug() << "Klient Znaleziony";
+        QString data = QString::fromUtf8(klient->readAll());
+        qDebug() << "dane odczytane";
+        QStringList komunikat = data.split("\n");
+        qDebug() << "Czytam messageParts";
+        qDebug() << komunikat;
+        if (komunikat.size() >= 3)
+        {
+            qDebug() << "komunikat size >= 3";
+            QString nazwaNadawcy = komunikat[1];
+            QString Temat = komunikat[0];
+            QString Opis = komunikat[2];
+
+            qDebug() << "Odebrano dane. Emitowanie sygnału messageReceived...";
+            emit wiadomoscOdebrana(nazwaNadawcy, Temat, Opis); // Emitowanie sygnału z danymi wiadomości
+
+            // Wyświetlenie otrzymanej wiadomości
+                        qDebug() << "Otrzymano wiadomość:";
+                        qDebug() << "Od: " << nazwaNadawcy;
+                        qDebug() << "Temat: " << Temat;
+                        qDebug() << "Opis: " << Opis;
+        }
+    }
+}
+
+void MainWindow::wyswietlDane(const QString &nadawca, const QString &temat, const QString &opis)
+{
+    QString wiadomosc = "Od: " + nadawca + "\n"
+                      "Temat: " + temat + "\n"
+                      "Opis: " + opis;
+    QMessageBox::information(this, "Nowe zgłoszenie", wiadomosc);
+}
+
+void MainWindow::widocznosc()
+{
+    if (isVisible())
+            hide();
+    else
+        show();
+}
+
+void MainWindow::zamknij()
+{
+    qApp->quit();
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if(ikonaZasobnik->isVisible())
+    {
+        hide();
+        event->ignore();
+    }
+    else
+    {
+        event->accept();
+    }
+}
+
+
+void MainWindow::przechwycData()
+{
+    while (udpServer->hasPendingDatagrams())
+    {
+        QByteArray datagram;
+        QHostAddress adresNadawcy;
+        quint16 portNadawcy;
+
+        datagram.resize(udpServer->pendingDatagramSize());
+        udpServer->readDatagram(datagram.data(),datagram.size(), &adresNadawcy, &portNadawcy);
+    }
+}
+
+void MainWindow::pokazWiadomosc(const QString &nadawca, const QString &temat, const QString &opis)
+{
+    qDebug() << "Przetwarzanie otrzymanej wiadomości...";
+    qDebug() << "Otrzymano wiadomość:";
+        qDebug() << "Od: " << nadawca;
+        qDebug() << "Temat: " << temat;
+        qDebug() << "Opis: " << opis;
+    // Tutaj możesz wykonać odpowiednie operacje na otrzymanych danych wiadomości
+    // Na przykład, możesz wyświetlić je w oknie aplikacji serwerowej
+    QString wiadomosc = "Od : " + nadawca + "\n"
+                      "Temat: " + temat + "\n"
+                      "Opis: " + opis;
+
+    QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Information);
+        msgBox.setWindowTitle("Nowe zgłoszenie problemu!!!");
+        msgBox.setText(wiadomosc);
+        msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint); // Dodaj flagę WindowStaysOnTopHint
+        msgBox.exec();
 }
 
 

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QEvent>
 #include <cstdlib>
 #include <QMessageBox>
 #include <QtNetwork/QTcpSocket>
@@ -34,7 +35,11 @@ public:
     {
         this->showNormal(); // lub this->show()
     }
-    void connectsock();
+
+    QList<QString> getWiadomosci();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 private slots:
     void on_basic_clicked();
@@ -45,12 +50,27 @@ private slots:
     void on_pushButton_clicked();
 
 
-    void on_report_prob_clicked();
+   // void on_report_prob_clicked();   //niedostępne w aplikacji serwer
 
+    void nowePolaczenie();
+    void czytajDane();
+    void wyswietlDane(const QString& nadawca, const QString& temat, const QString& opis);
+    void widocznosc();
+    void zamknij();
+    void przechwycData();
+    void pokazWiadomosc(const QString& nadawca, const QString& temat, const QString& opis);
 
+signals:
+    void wiadomoscOdebrana(const QString& nadawca, const QString& temat, const QString& opis);
 
 private:
     Ui::MainWindow *ui;
+    QTcpServer *tcpServer;
+    QUdpSocket *udpServer;
+    QList<QTcpSocket*> klienci;
+    QSystemTrayIcon *ikonaZasobnik;
+    QMenu *menuZasobnika;
+    QList<QString> wiadomosci;
 };
 
 
