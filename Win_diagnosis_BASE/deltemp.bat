@@ -2,6 +2,8 @@
 
 echo Czyszcze Pliki tymczasowe...
 
+C:
+
 cd %temp%
 DEL /q *
 

@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
     }
 
     MainWindow w;
+   // w.setAttribute(Qt::WA_QuitOnClose, false);
     w.setWindowTitle("PC Diagnostic Center");
     w.setWindowIcon(QIcon("diag_center.ico"));
     w.show();

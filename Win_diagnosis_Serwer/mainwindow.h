@@ -40,6 +40,7 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *event) override;
+    void changeEvent(QEvent *event) override;
 
 private slots:
     void on_basic_clicked();
@@ -60,10 +61,15 @@ private slots:
     void przechwycData();
     void pokazWiadomosc(const QString& nadawca, const QString& temat, const QString& opis);
 
+    void onAboutToQuit();
 signals:
     void wiadomoscOdebrana(const QString& nadawca, const QString& temat, const QString& opis);
 
 private:
+    QCloseEvent *zamknijEvent;
+    bool isMinimized;
+
+
     Ui::MainWindow *ui;
     QTcpServer *tcpServer;
     QUdpSocket *udpServer;

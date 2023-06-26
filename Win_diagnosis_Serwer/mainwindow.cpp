@@ -36,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     ikonaZasobnik = new QSystemTrayIcon(QIcon("diag_center.ico"),this);
     ikonaZasobnik->setContextMenu(menuZasobnika);
     ikonaZasobnik->show();
+
+    connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
 }
 
 MainWindow::~MainWindow()
@@ -49,7 +51,10 @@ QList<QString> MainWindow::getWiadomosci()
 }
 
 
-
+void MainWindow::onAboutToQuit()
+{
+    // Tutaj możesz umieścić odpowiednią logikę lub zostawić pustą implementację
+}
 
 void MainWindow::on_basic_clicked()
 {
@@ -155,7 +160,7 @@ void MainWindow::czytajDane()
             emit wiadomoscOdebrana(nazwaNadawcy, Temat, Opis); // Emitowanie sygnału z danymi wiadomości
 
             // Wyświetlenie otrzymanej wiadomości
-                        qDebug() << "Otrzymano wiadomość:";
+                        qDebug() << "Otrzymano wiadomość: READ_DATA";
                         qDebug() << "Od: " << nazwaNadawcy;
                         qDebug() << "Temat: " << Temat;
                         qDebug() << "Opis: " << Opis;
@@ -165,6 +170,7 @@ void MainWindow::czytajDane()
 
 void MainWindow::wyswietlDane(const QString &nadawca, const QString &temat, const QString &opis)
 {
+    qDebug()<< "WYSWIETL DANE FUNKCJA";
     QString wiadomosc = "Od: " + nadawca + "\n"
                       "Temat: " + temat + "\n"
                       "Opis: " + opis;
@@ -174,14 +180,25 @@ void MainWindow::wyswietlDane(const QString &nadawca, const QString &temat, cons
 void MainWindow::widocznosc()
 {
     if (isVisible())
+    {
+        isMinimized = false;
             hide();
+    }
     else
+ {
+
+       isMinimized = true;
         show();
+ }
 }
 
 void MainWindow::zamknij()
 {
-    qApp->quit();
+    if (isMinimized) {
+            hide();
+        } else {
+            qApp->quit();
+        }
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -196,7 +213,18 @@ void MainWindow::closeEvent(QCloseEvent *event)
         event->accept();
     }
 }
-
+void MainWindow::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::WindowStateChange) {
+        QWindowStateChangeEvent *stateChangeEvent = static_cast<QWindowStateChangeEvent*>(event);
+        if (stateChangeEvent->oldState() & Qt::WindowMinimized) {
+            isMinimized = false;
+        } else if (stateChangeEvent->oldState() & Qt::WindowNoState && windowState() & Qt::WindowMinimized) {
+            isMinimized = true;
+        }
+    }
+    QMainWindow::changeEvent(event);
+}
 
 void MainWindow::przechwycData()
 {
@@ -213,22 +241,24 @@ void MainWindow::przechwycData()
 
 void MainWindow::pokazWiadomosc(const QString &nadawca, const QString &temat, const QString &opis)
 {
-    qDebug() << "Przetwarzanie otrzymanej wiadomości...";
+    qDebug() << "Przetwarzanie otrzymanej wiadomości... HANDLE_MESSAGE";
     qDebug() << "Otrzymano wiadomość:";
         qDebug() << "Od: " << nadawca;
         qDebug() << "Temat: " << temat;
         qDebug() << "Opis: " << opis;
-    // Tutaj możesz wykonać odpowiednie operacje na otrzymanych danych wiadomości
-    // Na przykład, możesz wyświetlić je w oknie aplikacji serwerowej
+
     QString wiadomosc = "Od : " + nadawca + "\n"
                       "Temat: " + temat + "\n"
                       "Opis: " + opis;
 
+
     QMessageBox msgBox;
+
         msgBox.setIcon(QMessageBox::Information);
+        msgBox.setWindowIcon(QIcon("diag_center.ico"));
         msgBox.setWindowTitle("Nowe zgłoszenie problemu!!!");
         msgBox.setText(wiadomosc);
-        msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint); // Dodaj flagę WindowStaysOnTopHint
+        msgBox.setWindowFlags(msgBox.windowFlags() | Qt::WindowStaysOnTopHint); // pojawianie się nad wszystkimi oknami
         msgBox.exec();
 }
 
