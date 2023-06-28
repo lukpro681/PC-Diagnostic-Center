@@ -154,7 +154,12 @@ void MainWindow::czytajDane()
             qDebug() << "komunikat size >= 3";
             QString nazwaNadawcy = komunikat[1];
             QString Temat = komunikat[0];
-            QString Opis = komunikat[2];
+            QString Opis;
+            for (int i = 2; i < komunikat.size(); i++) {
+                Opis += komunikat[i] + "\n";
+            }
+
+            //QString Opis = komunikat[2];
 
             qDebug() << "Odebrano dane. Emitowanie sygnału messageReceived...";
             emit wiadomoscOdebrana(nazwaNadawcy, Temat, Opis); // Emitowanie sygnału z danymi wiadomości
