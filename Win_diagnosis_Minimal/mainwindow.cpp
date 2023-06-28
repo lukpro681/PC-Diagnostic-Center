@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "QtNetwork/qtcpsocket.h"
-#include "send.h"
 #include "ui_mainwindow.h"
 #include "funkcje.h"
 #include "about.h"
@@ -9,21 +8,15 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-//    QMenu *menu1 = new QMenu();
-//    QAction* quitAction = new QAction("Quit", this);
-//    connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
-//    menu1->addAction(quitAction);
 
 
     ui->setupUi(this);
-  //  connectsock();
 }
 
 
 
 MainWindow::~MainWindow()
 {
-
     delete ui;
 }
 
@@ -94,18 +87,6 @@ void MainWindow::on_pushButton_clicked()
             restart();
     }
 }
-
-
-
-
-void MainWindow::on_report_prob_clicked()
-{
-    send m_okno;
-    m_okno.setWindowTitle("Zgłoś problem do nas");
-    m_okno.setWindowIcon(QIcon("diag_center.ico"));
-    m_okno.exec();
-}
-
 
 
 

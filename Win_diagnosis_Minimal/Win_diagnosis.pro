@@ -13,23 +13,18 @@ CONFIG += c++11
 
 SOURCES += \
     about.cpp \
-    clickablelabel.cpp \
     funkcje.cpp \
     main.cpp \
-    mainwindow.cpp \
-    send.cpp
+    mainwindow.cpp
 
 HEADERS += \
     about.h \
-    clickablelabel.h \
     funkcje.h \
-    mainwindow.h \
-    send.h
+    mainwindow.h
 
 FORMS += \
     about.ui \
-    mainwindow.ui \
-    send.ui
+    mainwindow.ui
 
 TRANSLATIONS += \
     Win_diagnosis_pl_PL.ts
@@ -42,5 +37,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    Win_diagnosis_en_US.ts \
     rklogo.ico
 

@@ -6,93 +6,94 @@
     <message>
         <location filename="mainwindow.ui" line="26"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>PC Diagnostic Center</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="39"/>
         <source>Wybierz tryb naprawy</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose repair mode</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="45"/>
         <source>Wykonuje podstawową procedurę naprawy systemu plików</source>
-        <translation type="unfinished"></translation>
+        <translation>Executing basic reparing file system procedure</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="48"/>
         <source>Podstawowy</source>
-        <translation type="unfinished"></translation>
+        <translation>Basic</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="55"/>
         <source>Pozwala wybrać zestaw instrukcji, który ma zostać wykonany</source>
-        <translation type="unfinished"></translation>
+        <translation>Allows you to choose instructions to execute</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="58"/>
         <source>Zaawansowany</source>
-        <translation type="unfinished"></translation>
+        <translation>Advanced</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="71"/>
         <source>Opcje Zaawansowane</source>
-        <translation type="unfinished"></translation>
+        <translation>Advanced Options</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="80"/>
         <source>Usuń pliki tymczasowe</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete temporary files</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="90"/>
         <source>Sprawdzenie dysku</source>
-        <translation type="unfinished"></translation>
+        <translation>Check disk</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="100"/>
         <source>Skanowanie systemu plików pod kątem uszkodzeń</source>
-        <translation type="unfinished"></translation>
+        <translation>Scan system files</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="110"/>
         <source>Wyczyść tymczasowe pliki aktualizacji</source>
-        <translation type="unfinished"></translation>
+        <translation>Erase temporary component store files</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="120"/>
         <source>Kontroler plików systemowych</source>
-        <translation type="unfinished"></translation>
+        <translation>File system checker</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="136"/>
+        <location filename="mainwindow.ui" line="133"/>
         <source>Analiza tymczasowych plików aktualizacji</source>
-        <translation type="unfinished"></translation>
+        <translation>Temporary component store files analysis</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="146"/>
+        <location filename="mainwindow.ui" line="143"/>
         <source>Naprawa uszkodzonych plików</source>
-        <translation type="unfinished"></translation>
+        <translation>Repair corrupted system files</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="156"/>
+        <location filename="mainwindow.ui" line="153"/>
         <source>Wykonaj ponowne uruchomienie</source>
-        <translation type="unfinished"></translation>
+        <translation>Execute computer restart</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="173"/>
+        <location filename="mainwindow.ui" line="170"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Diagnostyka &lt;/p&gt;&lt;p&gt;systemu Windows&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Windows
+Diagnostics</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="217"/>
+        <location filename="mainwindow.ui" line="214"/>
         <source>Rozpocznij</source>
-        <translation type="unfinished"></translation>
+        <translation>Begin</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="226"/>
-        <location filename="mainwindow.ui" line="234"/>
+        <location filename="mainwindow.ui" line="223"/>
+        <location filename="mainwindow.ui" line="231"/>
         <source>O Aplikacji</source>
-        <translation type="unfinished"></translation>
+        <translation>About</translation>
     </message>
 </context>
 <context>

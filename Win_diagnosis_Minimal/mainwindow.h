@@ -39,7 +39,6 @@ private slots:
     void on_pushButton_clicked();
 
 
-    void on_report_prob_clicked();
 
 
 
