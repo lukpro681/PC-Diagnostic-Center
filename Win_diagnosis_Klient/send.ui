@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>613</width>
-    <height>441</height>
+    <height>492</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,23 +21,9 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QCheckBox" name="piotr">
+       <widget class="QRadioButton" name="Admin">
         <property name="text">
-         <string>Piotr Myśliwiec</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="luke">
-        <property name="text">
-         <string>Łukasz Prokop</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="markus">
-        <property name="text">
-         <string>Marek Szczepanik</string>
+         <string>Administrator</string>
         </property>
        </widget>
       </item>
@@ -68,76 +54,17 @@
       <string>Podaj Temat wiadomości</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
-       <widget class="QRadioButton" name="NoTonerProb">
-        <property name="text">
-         <string>Brak toneru w drukarce</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
+      <item row="3" column="0">
        <widget class="QRadioButton" name="ZoomTeamsProb">
         <property name="text">
          <string>Problem z dźwiękiem na Zoom/Teams</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QRadioButton" name="BIG_INCIDENT">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="NoTonerProb">
         <property name="text">
-         <string>Problem na antenie</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QRadioButton" name="phoneProb">
-        <property name="text">
-         <string>Problem z telefonem</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="0">
-       <widget class="QRadioButton" name="mailProb">
-        <property name="text">
-         <string>Problem ze skrzynką mailową</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QRadioButton" name="RamrokProb">
-        <property name="text">
-         <string>Problem z RamRok</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QRadioButton" name="EnovaProb">
-        <property name="text">
-         <string>Problem z Enovą</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QRadioButton" name="VegasProb">
-        <property name="acceptDrops">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Problem z dźwiękiem w SAWPRO/VEGAS</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="PrinterNotWork">
-        <property name="text">
-         <string>Drukarka nie drukuje</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QRadioButton" name="d3Prob">
-        <property name="text">
-         <string>Problem z D3</string>
+         <string>Brak toneru w drukarce</string>
         </property>
        </widget>
       </item>
@@ -148,10 +75,41 @@
         </property>
        </widget>
       </item>
-      <item row="11" column="0">
+      <item row="5" column="0">
+       <widget class="QRadioButton" name="phoneProb">
+        <property name="text">
+         <string>Problem z telefonem</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QRadioButton" name="VegasProb">
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Problem z dźwiękiem w VEGAS</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="PrinterNotWork">
+        <property name="text">
+         <string>Drukarka nie drukuje</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
        <widget class="QRadioButton" name="otherProb">
         <property name="text">
          <string>Inny Problem</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QRadioButton" name="mailProb">
+        <property name="text">
+         <string>Problem ze skrzynką mailową</string>
         </property>
        </widget>
       </item>
