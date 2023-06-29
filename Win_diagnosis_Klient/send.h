@@ -26,6 +26,8 @@ private slots:
 
     void on_sendButton_clicked();
 
+    void on_Admin_clicked(bool checked);
+
 private:
     QTcpSocket* tcpSocket;
     Ui::send *ui;

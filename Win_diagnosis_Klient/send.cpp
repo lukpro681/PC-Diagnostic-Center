@@ -30,16 +30,23 @@ void send::on_sendButton_clicked()
             ui->PrinterNotFound->isChecked()||ui->PrinterNotWork->isChecked()||ui->mailProb->isChecked()||
             ui->phoneProb->isChecked()||ui->otherProb->isChecked()){
 
-        QString recipient = ui->Admin->text();
 
-        if(ui->Admin->isChecked()){
+        QString recipient;
 
-            recipient= "192.168.0.59";
+        if(ui->Admin->isChecked())
+        {
+            recipient = "192.168.0.59";
+        }
+        else{
+           recipient = ui->OtherIP->text();
+        }
 
 
             if(ui->type_prob->toPlainText()==""){
                 ui->type_prob->setPlainText("Brak opisu");
             }
+
+
 
             QString UserInfo = QHostInfo::localHostName();
             QString message;
@@ -86,10 +93,7 @@ void send::on_sendButton_clicked()
                 QMessageBox::critical(this, "Błąd", "Nie udało się połączyć z serwerem.");
             }
         }
-        else {
-            QMessageBox::critical(this,"Błąd","Musisz wybrać odbiorcę");
-        }
-    }
+
     else {
         QMessageBox::critical(this,"Błąd","Musisz wybrać temat");
     }
@@ -281,3 +285,12 @@ void send::discoverServers()
 //        arg2 = "192.168.1.199";
 //    if(ui->piotr->isChecked())
 //        arg3 = "192.168.1.13";
+
+void send::on_Admin_clicked(bool checked)
+{
+    if(checked)
+        ui->OtherIP->setEnabled(false);
+    else ui->OtherIP->setEnabled(true);
+
+}
+
