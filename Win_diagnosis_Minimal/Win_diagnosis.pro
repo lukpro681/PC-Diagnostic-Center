@@ -40,3 +40,4 @@ DISTFILES += \
     Win_diagnosis_en_US.ts \
     rklogo.ico
 
+win32: RC_ICONS += diag_center.ico

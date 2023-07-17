@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
               return 0;
           }
     QApplication a(argc, argv);
+    a.setWindowIcon(QIcon("diag_center.ico"));
     a.windowIcon() = QIcon("diag_center.ico");
 
 
