@@ -44,3 +44,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     rklogo.ico
 
+win32: RC_ICONS += diag_center.ico

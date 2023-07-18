@@ -18,69 +18,33 @@
 int main(int argc, char *argv[])
 {
     // Sprawdzanie uprawnień administratora
-       BOOL isElevated = FALSE;
-       HANDLE token = NULL;
+//       BOOL isElevated = FALSE;
+//       HANDLE token = NULL;
 
-       if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &token))
-          {
-              TOKEN_ELEVATION elevation;
-              DWORD size = sizeof(TOKEN_ELEVATION);
+//       if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &token))
+//          {
+//              TOKEN_ELEVATION elevation;
+//              DWORD size = sizeof(TOKEN_ELEVATION);
 
-              if (GetTokenInformation(token, TokenElevation, &elevation, sizeof(elevation), &size))
-              {
-                  isElevated = elevation.TokenIsElevated;
-              }
-          }
+//              if (GetTokenInformation(token, TokenElevation, &elevation, sizeof(elevation), &size))
+//              {
+//                  isElevated = elevation.TokenIsElevated;
+//              }
+//          }
 
-          // Jeśli nie jesteś administratorem, uruchamiaj aplikację ponownie z uprawnieniami administratora
-          if (!isElevated)
-          {
-              wchar_t executablePath[MAX_PATH];
-              GetModuleFileNameW(NULL, executablePath, MAX_PATH);
+//          // Jeśli nie jesteś administratorem, uruchamiaj aplikację ponownie z uprawnieniami administratora
+//          if (!isElevated)
+//          {
+//              wchar_t executablePath[MAX_PATH];
+//              GetModuleFileNameW(NULL, executablePath, MAX_PATH);
 
-              ShellExecuteW(NULL, L"runas", executablePath, NULL, NULL, SW_SHOWNORMAL);
+//              ShellExecuteW(NULL, L"runas", executablePath, NULL, NULL, SW_SHOWNORMAL);
 
-              return 0;
-          }
+//              return 0;
+//          }
     QApplication a(argc, argv);
+    a.setWindowIcon(QIcon("diag_center.ico"));
     a.windowIcon() = QIcon("diag_center.ico");
-//    a.setQuitOnLastWindowClosed(false);
-//    QPixmap trayPix(32,32);
-//    trayPix.load("diag_center.ico");
-
-
-//    QIcon oIcon(trayPix);
-//   QSystemTrayIcon *trayIcon = new QSystemTrayIcon(oIcon);
-//   qDebug() << trayIcon->isSystemTrayAvailable();
-//   trayIcon->setVisible(true);
-//   trayIcon->showMessage("PC Diagnostic Center", "Serwer jest włączony", QSystemTrayIcon::Information, 1000);
-
-//    QString serverAddress = "127.0.0.1";
-//    quint16 serverPort = 4829;
-//    QMessageBox x;
-//    x.setWindowIcon(QIcon("diag_center.ico"));
-//    QTcpSocket socket;
-//        socket.connectToHost(serverAddress, serverPort);
-//        if (socket.waitForConnected()) {
-//            // Wysyłanie wiadomości do serwera
-//            QString message = "Hello, World!";
-//            socket.write(message.toUtf8());
-
-//            // Oczekiwanie na odpowiedź od serwera
-//            if (socket.waitForReadyRead()) {
-//                // Odczytywanie odpowiedzi serwera
-//                QString response = socket.readAll();
-
-//                // Wyświetlanie odpowiedzi na ekranie
-//                x.information(nullptr, "Odpowiedź serwera", response);
-//            }
-//        } else {
-//            // Wyświetlanie błędu połączenia na ekranie
-//            x.critical(nullptr, "Błąd połączenia", "Nie udało się połączyć z serwerem.");
-//        }
-
-//        // Zamykanie gniazda TCP
-//        socket.close();
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();

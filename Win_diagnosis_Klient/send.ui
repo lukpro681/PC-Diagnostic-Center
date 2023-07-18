@@ -139,13 +139,6 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QCheckBox" name="Admin">
-        <property name="text">
-         <string>Administrator</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QLineEdit" name="OtherIP"/>
       </item>
      </layout>
