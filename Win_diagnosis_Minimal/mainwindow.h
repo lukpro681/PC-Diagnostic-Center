@@ -31,6 +31,7 @@ public:
     void connectsock();
 
 private slots:
+    void aboutWindow();
     void on_basic_clicked();
 
     void on_advanced_clicked();
@@ -41,6 +42,8 @@ private slots:
 
 
 
+
+    void on_actionO_Aplikacji_3_triggered();
 
 private:
     Ui::MainWindow *ui;

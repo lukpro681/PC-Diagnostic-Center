@@ -50,6 +50,14 @@ QList<QString> MainWindow::getWiadomosci()
     return wiadomosci;
 }
 
+void MainWindow::aboutWindow()
+{
+    about *newabout = new about(this);
+    newabout->setWindowIcon(QIcon("diag_center.ico"));
+    newabout->setWindowTitle("O aplikacji");
+    newabout->show();
+}
+
 
 void MainWindow::onAboutToQuit()
 {
@@ -188,6 +196,7 @@ void MainWindow::widocznosc()
     {
         isMinimized = false;
             hide();
+        qApp->setQuitLockEnabled(true);
     }
     else
  {
@@ -199,11 +208,8 @@ void MainWindow::widocznosc()
 
 void MainWindow::zamknij()
 {
-    if (isMinimized) {
-            hide();
-        } else {
-            qApp->quit();
-        }
+ qApp->setQuitLockEnabled(false);
+ qApp->quit();
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -270,4 +276,10 @@ void MainWindow::pokazWiadomosc(const QString &nadawca, const QString &temat, co
 
 
 
+
+
+void MainWindow::on_actionO_Aplikacji_3_triggered()
+{
+        aboutWindow();
+}
 

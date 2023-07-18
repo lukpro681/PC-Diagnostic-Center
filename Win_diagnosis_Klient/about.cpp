@@ -22,7 +22,7 @@ about::~about()
 
 void about::showAbout(QString ver, QString aut, QString desc)
 {
-    ui->VersionLabel->setText("Wersja: " + ver);
+    ui->VersionLabel->setText("PC Diagnostic Center Client \nWersja: " + ver);
     ui->AuthorLabel->setText("Autorzy: " + aut);
     ui->aboutLabel->setText(desc);
 }

@@ -62,6 +62,9 @@ private slots:
     void pokazWiadomosc(const QString& nadawca, const QString& temat, const QString& opis);
 
     void onAboutToQuit();
+    void on_actionO_Aplikacji_3_triggered();
+
+    void aboutWindow();
 signals:
     void wiadomoscOdebrana(const QString& nadawca, const QString& temat, const QString& opis);
 

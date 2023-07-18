@@ -159,7 +159,6 @@
       <property name="font">
        <font>
         <pointsize>22</pointsize>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -359,6 +358,23 @@
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>896</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuInformacje">
+    <property name="title">
+     <string>Informacje</string>
+    </property>
+    <addaction name="actionO_Aplikacji_3"/>
+   </widget>
+   <addaction name="menuInformacje"/>
+  </widget>
   <action name="actionO_Aplikacji">
    <property name="text">
     <string>O Aplikacji</string>
@@ -367,6 +383,15 @@
   <action name="actionO_Aplikacji_2">
    <property name="checkable">
     <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>O Aplikacji</string>
+   </property>
+  </action>
+  <action name="actionO_Aplikacji_3">
+   <property name="icon">
+    <iconset>
+     <normaloff>diag_center.ico</normaloff>diag_center.ico</iconset>
    </property>
    <property name="text">
     <string>O Aplikacji</string>
