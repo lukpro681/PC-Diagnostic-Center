@@ -28,6 +28,14 @@ void MainWindow::connectsock()
 
 }
 
+void MainWindow::aboutWindow()
+{
+    about *newabout = new about(this);
+    newabout->setWindowIcon(QIcon("diag_center.ico"));
+    newabout->setWindowTitle("O aplikacji");
+    newabout->show();
+}
+
 
 void MainWindow::on_basic_clicked()
 {
@@ -105,4 +113,10 @@ void MainWindow::on_report_prob_clicked()
 
 
 
+
+
+void MainWindow::on_actionO_Aplikacji_triggered()
+{
+    aboutWindow();
+}
 
