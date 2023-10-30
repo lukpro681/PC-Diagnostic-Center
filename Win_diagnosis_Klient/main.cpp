@@ -15,7 +15,7 @@
 #include <QCoreApplication>
 
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) //DO ZAKOMENTOWANIA PODCZAS KOMPILACJI
 {
     // Sprawdzanie uprawnień administratora
        BOOL isElevated = FALSE;
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
               ShellExecuteW(NULL, L"runas", executablePath, NULL, NULL, SW_SHOWNORMAL);
 
               return 0;
-          }
+          } //KONIEC KOMENTARZA
     QApplication a(argc, argv);
     a.setWindowIcon(QIcon("diag_center.ico"));
     a.windowIcon() = QIcon("diag_center.ico");
